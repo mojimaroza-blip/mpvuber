@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Village Ride | Book Ride</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <h2>VILLAGE RIDE</h2>
+
+        <div class="links">
+            <a href="index.html">Home</a>
+            <a href="booking.html">Book Ride</a>
+            <a href="driver.html">Driver</a>
+        </div>
+    </nav>
+
+    <!-- BOOKING SECTION -->
+    <section class="booking">
+
+        <h1>BOOK YOUR RIDE</h1>
+
+        <p>Enter your trip details below.</p>
+
+        <label for="pickup">Pickup location</label>
+
+        <input
+            type="text"
+            id="pickup"
+            placeholder="Where should we collect you?"
+        >
+
+        <label for="destination">Destination</label>
+
+        <input
+            type="text"
+            id="destination"
+            placeholder="Where are you going?"
+        >
+
+        <label for="distance">Distance in kilometres</label>
+
+        <input
+            type="number"
+            id="distance"
+            placeholder="Enter distance"
+            min="0.1"
+            step="0.1"
+        >
+
+        <button type="button" onclick="calculateFare()">
+            CALCULATE FARE
+        </button>
+
+        <div class="fare-box">
+
+            <h3 id="fare">Your fare: R0.00</h3>
+
+            <p>Payment method: Cash</p>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Village Ride | Mphanama</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
