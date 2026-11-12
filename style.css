@@ -1,0 +1,140 @@
+
+/* GENERAL WEBSITE */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #111827;
+}
+
+/* NAVIGATION */
+nav {
+    background-color: #111827;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.links a {
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+}
+
+/* HOME PAGE */
+.hero {
+    background-color: #172554;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h1 {
+    font-size: 35px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #f5b400;
+    color: black;
+    padding: 15px 25px;
+    text-decoration: none;
+    margin-top: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* ABOUT SECTION */
+.about {
+    text-align: center;
+    padding: 50px 20px;
+    max-width: 700px;
+    margin: auto;
+    line-height: 1.7;
+}
+
+/* BOOKING PAGE */
+.booking {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.booking label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.booking input {
+    display: block;
+    width: 85%;
+    max-width: 400px;
+    padding: 15px;
+    margin: 10px auto 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* BUTTONS */
+button {
+    background-color: #f5b400;
+    color: black;
+    border: none;
+    padding: 15px 25px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* FARE BOX */
+.fare-box {
+    background-color: white;
+    max-width: 400px;
+    margin: 25px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px #ddd;
+}
+
+#fare {
+    color: #16834a;
+    font-size: 25px;
+}
+
+/* DRIVER PAGE */
+.driver {
+    background-color: #e5e7eb;
+    text-align: center;
+    padding: 70px 20px;
+}
+
+/* FOOTER */
+footer {
+    background-color: #111827;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* MOBILE RESPONSIVE DESIGN */
+@media (max-width: 600px) {
+
+    nav {
+        flex-direction: column;
+    }
+
+    .links {
+        margin-top: 15px;
+    }
+
+    .links a {
+        margin: 5px;
+    }
+
+    .hero h1 {
+        font-size: 25px;
+    }
+}
