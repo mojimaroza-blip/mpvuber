@@ -1,172 +1,29 @@
 
-/* GENERAL WEBSITE */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #111827;
-}
-
-/* NAVIGATION */
-nav {
-    background-color: #111827;
-    color: white;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.links a {
-    color: white;
-    text-decoration: none;
-    margin: 10px;
-}
-
-/* HOME PAGE */
-.hero {
-    background-color: #172554;
-    color: white;
-    text-align: center;
-    padding: 100px 20px;
-}
-
-.hero h1 {
-    font-size: 35px;
-}
-
-.btn {
-    display: inline-block;
-    background-color: #f5b400;
-    color: black;
-    padding: 15px 25px;
-    text-decoration: none;
-    margin-top: 20px;
-    border-radius: 5px;
-    font-weight: bold;
-}
-
-/* ABOUT SECTION */
-.about {
-    text-align: center;
-    padding: 50px 20px;
-    max-width: 700px;
-    margin: auto;
-    line-height: 1.7;
-}
-
-/* BOOKING PAGE */
-.booking {
-    text-align: center;
-    padding: 40px 20px;
-}
-
-.booking label {
-    display: block;
-    margin-top: 15px;
-    font-weight: bold;
-}
-
-.booking input {
-    display: block;
-    width: 85%;
-    max-width: 450px;
+/* HIDDEN DESTINATION MAP */
+#mapArea {
+    display: none;
+    max-width: 900px;
+    margin: 25px auto;
+    background: white;
     padding: 15px;
-    margin: 10px auto 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
+    border-radius: 12px;
 }
 
-/* BUTTONS */
-button {
-    background-color: #f5b400;
-    color: black;
-    border: none;
-    padding: 15px 25px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: bold;
+/* SHOW MAP WHEN OPENED */
+#mapArea.active {
+    display: block;
 }
 
-button:hover {
-    background-color: #e5a900;
-}
-
-/* MAP INSTRUCTIONS */
-.map-instruction {
-    color: #555;
-    font-size: 14px;
-    margin: 15px;
-}
-
-/* MAP */
+/* MAP SIZE */
 #map {
     width: 100%;
-    max-width: 900px;
-    height: 450px;
-    margin: 20px auto;
-    border-radius: 12px;
-    border: 2px solid #ddd;
-    z-index: 1;
-}
-
-/* LOCATION STATUS */
-#locationStatus {
-    color: #16834a;
-    font-weight: bold;
-}
-
-/* FARE BOX */
-.fare-box {
-    background-color: white;
-    max-width: 450px;
-    margin: 25px auto;
-    padding: 20px;
+    height: 400px;
     border-radius: 10px;
-    box-shadow: 0 2px 10px #ddd;
+    margin: 15px auto;
 }
 
-#fare {
-    color: #16834a;
-    font-size: 25px;
-}
-
-/* DRIVER PAGE */
-.driver {
-    background-color: #e5e7eb;
-    text-align: center;
-    padding: 70px 20px;
-}
-
-/* FOOTER */
-footer {
-    background-color: #111827;
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
-
-/* MOBILE RESPONSIVE DESIGN */
-@media (max-width: 600px) {
-
-    nav {
-        flex-direction: column;
-    }
-
-    .links {
-        margin-top: 15px;
-    }
-
-    .links a {
-        margin: 5px;
-    }
-
-    .hero h1 {
-        font-size: 25px;
-    }
-
-    #map {
-        height: 350px;
-    }
+/* DESTINATION BUTTON */
+#showMapBtn {
+    display: block;
+    margin: 15px auto;
 }
