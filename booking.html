@@ -8,6 +8,12 @@
     <title>Village Ride | Book Ride</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <!-- LEAFLET MAP DESIGN -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
 </head>
 
 <body>
@@ -28,42 +34,53 @@
 
         <h1>BOOK YOUR RIDE</h1>
 
-        <p>Enter your trip details below.</p>
+        <p>Choose your pickup location and destination.</p>
 
+        <!-- CURRENT LOCATION -->
+        <button type="button" id="locationBtn">
+            USE MY CURRENT LOCATION
+        </button>
+
+        <p id="locationStatus">
+            Your pickup location has not been selected.
+        </p>
+
+        <!-- PICKUP DETAILS -->
         <label for="pickup">Pickup location</label>
 
         <input
             type="text"
             id="pickup"
-            placeholder="Where should we collect you?"
+            placeholder="Your current location"
+            readonly
         >
 
+        <!-- DESTINATION DETAILS -->
         <label for="destination">Destination</label>
 
         <input
             type="text"
             id="destination"
-            placeholder="Where are you going?"
+            placeholder="Tap the map to choose destination"
+            readonly
         >
 
-        <label for="distance">Distance in kilometres</label>
+        <p class="map-instruction">
+            Tap the map to select where you want to go.
+        </p>
 
-        <input
-            type="number"
-            id="distance"
-            placeholder="Enter distance"
-            min="0.1"
-            step="0.1"
-        >
+        <!-- MAP -->
+        <div id="map"></div>
 
-        <button type="button" onclick="calculateFare()">
-            CALCULATE FARE
-        </button>
-
+        <!-- FARE -->
         <div class="fare-box">
+
+            <h3 id="distance">Distance: Not calculated</h3>
 
             <h3 id="fare">Your fare: R0.00</h3>
 
+            <p>Base fare: R10</p>
+            <p>Price per kilometre: R3</p>
             <p>Payment method: Cash</p>
 
         </div>
@@ -75,6 +92,12 @@
         <p>© 2026 Village Ride | Mphanama</p>
     </footer>
 
+    <!-- LEAFLET MAP SCRIPT -->
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+    </script>
+
+    <!-- OUR JAVASCRIPT -->
     <script src="script.js"></script>
 
 </body>
