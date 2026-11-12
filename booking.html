@@ -9,96 +9,87 @@
 
     <link rel="stylesheet" href="style.css">
 
-    <!-- LEAFLET MAP DESIGN -->
-    <link
-        rel="stylesheet"
-        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    >
+    <link rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 </head>
 
 <body>
 
-    <!-- NAVIGATION -->
-    <nav>
-        <h2>VILLAGE RIDE</h2>
+<nav>
+    <h2>VILLAGE RIDE</h2>
 
-        <div class="links">
-            <a href="index.html">Home</a>
-            <a href="booking.html">Book Ride</a>
-            <a href="driver.html">Driver</a>
-        </div>
-    </nav>
+    <div class="links">
+        <a href="index.html">Home</a>
+        <a href="booking.html">Book Ride</a>
+        <a href="driver.html">Driver</a>
+    </div>
+</nav>
 
-    <!-- BOOKING SECTION -->
-    <section class="booking">
+<section class="booking">
 
-        <h1>BOOK YOUR RIDE</h1>
+    <h1>BOOK YOUR RIDE</h1>
 
-        <p>Choose your pickup location and destination.</p>
+    <p>Where would you like to go?</p>
 
-        <!-- CURRENT LOCATION -->
-        <button type="button" id="locationBtn">
-            USE MY CURRENT LOCATION
-        </button>
+    <button type="button" id="locationBtn">
+        USE MY CURRENT LOCATION
+    </button>
 
-        <p id="locationStatus">
-            Your pickup location has not been selected.
-        </p>
+    <p id="locationStatus">
+        Please select your pickup location.
+    </p>
 
-        <!-- PICKUP DETAILS -->
-        <label for="pickup">Pickup location</label>
+    <label for="pickup">Pickup location</label>
 
-        <input
-            type="text"
-            id="pickup"
-            placeholder="Your current location"
-            readonly
-        >
+    <input type="text" id="pickup"
+    placeholder="Your current location" readonly>
 
-        <!-- DESTINATION DETAILS -->
-        <label for="destination">Destination</label>
+    <label for="destination">Destination</label>
 
-        <input
-            type="text"
-            id="destination"
-            placeholder="Tap the map to choose destination"
-            readonly
-        >
+    <input type="text" id="destination"
+    placeholder="Choose your destination" readonly>
 
-        <p class="map-instruction">
-            Tap the map to select where you want to go.
-        </p>
+    <button type="button" id="showMapBtn">
+        CHOOSE DESTINATION
+    </button>
 
-        <!-- MAP -->
+    <!-- HIDDEN MAP AREA -->
+    <div id="mapArea">
+
+        <h3>Select your destination</h3>
+
+        <p>Tap the map where you want to go.</p>
+
         <div id="map"></div>
 
-        <!-- FARE -->
-        <div class="fare-box">
+        <button type="button" id="confirmDestinationBtn">
+            CONFIRM DESTINATION
+        </button>
 
-            <h3 id="distance">Distance: Not calculated</h3>
+    </div>
 
-            <h3 id="fare">Your fare: R0.00</h3>
+    <!-- FARE -->
+    <div class="fare-box">
 
-            <p>Base fare: R10</p>
-            <p>Price per kilometre: R3</p>
-            <p>Payment method: Cash</p>
+        <h3 id="distance">Distance: Not calculated</h3>
 
-        </div>
+        <h3 id="fare">Your fare: R0.00</h3>
 
-    </section>
+        <p>Base fare: R10</p>
+        <p>Price per kilometre: R3</p>
+        <p>Payment: Cash</p>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>© 2026 Village Ride | Mphanama</p>
-    </footer>
+    </div>
 
-    <!-- LEAFLET MAP SCRIPT -->
-    <script
-        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
-    </script>
+</section>
 
-    <!-- OUR JAVASCRIPT -->
-    <script src="script.js"></script>
+<footer>
+    <p>© 2026 Village Ride | Mphanama</p>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script src="script.js"></script>
 
 </body>
 </html>
