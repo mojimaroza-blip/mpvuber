@@ -58,7 +58,7 @@ nav {
 /* BOOKING PAGE */
 .booking {
     text-align: center;
-    padding: 50px 20px;
+    padding: 40px 20px;
 }
 
 .booking label {
@@ -70,7 +70,7 @@ nav {
 .booking input {
     display: block;
     width: 85%;
-    max-width: 400px;
+    max-width: 450px;
     padding: 15px;
     margin: 10px auto 20px;
     border: 1px solid #ccc;
@@ -89,10 +89,38 @@ button {
     font-weight: bold;
 }
 
+button:hover {
+    background-color: #e5a900;
+}
+
+/* MAP INSTRUCTIONS */
+.map-instruction {
+    color: #555;
+    font-size: 14px;
+    margin: 15px;
+}
+
+/* MAP */
+#map {
+    width: 100%;
+    max-width: 900px;
+    height: 450px;
+    margin: 20px auto;
+    border-radius: 12px;
+    border: 2px solid #ddd;
+    z-index: 1;
+}
+
+/* LOCATION STATUS */
+#locationStatus {
+    color: #16834a;
+    font-weight: bold;
+}
+
 /* FARE BOX */
 .fare-box {
     background-color: white;
-    max-width: 400px;
+    max-width: 450px;
     margin: 25px auto;
     padding: 20px;
     border-radius: 10px;
@@ -136,5 +164,9 @@ footer {
 
     .hero h1 {
         font-size: 25px;
+    }
+
+    #map {
+        height: 350px;
     }
 }
