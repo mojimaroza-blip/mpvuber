@@ -1,56 +1,61 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Village Ride | Drivers</title>
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drivers | Village Ride</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-    <!-- NAVIGATION -->
-    <nav>
-        <h2>VILLAGE RIDE</h2>
-
-        <div class="links">
-            <a href="index.html">Home</a>
-            <a href="booking.html">Book Ride</a>
-            <a href="driver.html">Driver</a>
-        </div>
+  <header class="site-header">
+    <a class="brand" href="index.html">
+      <span class="brand-car">🚘</span>
+      <span>VILLAGE <b>RIDE</b></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="booking.html">Book Ride</a>
+      <a class="active" href="driver.html">Driver</a>
     </nav>
+  </header>
 
-    <!-- DRIVER SECTION -->
-    <section class="driver">
+  <main class="driver-hero">
+    <div class="driver-copy">
+      <p class="eyebrow">JOIN OUR LOCAL DRIVER NETWORK</p>
+      <h1>WELCOME,<br><span>DRIVER</span></h1>
+      <p>Join Village Ride and help people travel around Mphanama.</p>
 
-        <h1>WELCOME, DRIVER</h1>
+      <ul>
+        <li>✓ Get ride requests</li>
+        <li>✓ Earn from your trips</li>
+        <li>✓ Work on your terms</li>
+      </ul>
 
+      <div class="driver-notice">
+        <h2>Driver registration is coming soon</h2>
         <p>
-            Join Village Ride and help people travel
-            around Mphanama.
+          This page is the design preview. Driver accounts, approval and ride
+          requests still need to be connected to Firebase before drivers can use them.
         </p>
+      </div>
 
-        <h2>Become a Village Ride Driver</h2>
+      <a class="button button-gold" href="index.html">Back to Home →</a>
+    </div>
 
-        <button type="button">
-            DRIVER REGISTRATION
-        </button>
+    <div class="driver-visual">
+      <div class="driver-car">🚙</div>
+      <div class="driver-caption">Together we move Mphanama forward.</div>
+    </div>
+  </main>
 
-        <p>Already registered?</p>
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="index.html">
+      <span>🚘</span><span>VILLAGE <b>RIDE</b></span>
+    </a>
+    <small>© 2026 Village Ride · Mphanama</small>
+  </footer>
 
-        <button type="button">
-            DRIVER LOGIN
-        </button>
-
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-        <p>© 2026 Village Ride | Mphanama</p>
-    </footer>
-
+  <script src="script.js"></script>
 </body>
 </html>
