@@ -1,236 +1,236 @@
+// VILLAGE RIDE - MENU AND BOOKING FUNCTIONS
 
-// VILLAGE RIDE PRICING
-const baseFare = 10;
-const pricePerKm = 3;
+// Mobile navigation menu
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
 
-// MAP
-const map = L.map("map").setView(
-    [-24.0, 29.0],
-    13
-);
+if (menuToggle && navLinks) {
+  menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("open");
+  });
+}
 
-L.tileLayer(
-    "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-    {
-        attribution: "&copy; OpenStreetMap contributors"
-    }
-).addTo(map);
+// Booking map variables
+let map;
+let pickupMarker;
+let destinationMarker;
+let routeLayer;
+let pickupPoint = null;
+let destinationPoint = null;
 
-
-// VARIABLES
-let pickupLocation = null;
-let destinationLocation = null;
-
-let pickupMarker = null;
-let destinationMarker = null;
-let routeLine = null;
-
-
-// HTML ELEMENTS
 const locationBtn = document.getElementById("locationBtn");
 const showMapBtn = document.getElementById("showMapBtn");
-const confirmBtn = document.getElementById("confirmDestinationBtn");
-
+const confirmDestinationBtn =
+  document.getElementById("confirmDestinationBtn");
 const mapArea = document.getElementById("mapArea");
 
-const pickupInput = document.getElementById("pickup");
-const destinationInput = document.getElementById("destination");
+function showBookingMessage(message) {
+  const status = document.getElementById("bookingStatus");
 
-const locationStatus = document.getElementById("locationStatus");
+  if (status) {
+    status.textContent = message;
+  }
+}
 
-const distanceDisplay = document.getElementById("distance");
-const fareDisplay = document.getElementById("fare");
-
-
-// FIND CURRENT LOCATION
-locationBtn.addEventListener("click", function () {
+// Get the passenger's pickup location using their device GPS
+if (locationBtn) {
+  locationBtn.addEventListener("click", () => {
+    const status = document.getElementById("locationStatus");
 
     if (!navigator.geolocation) {
-        locationStatus.innerText = "GPS is not supported.";
-        return;
+      status.textContent =
+        "Your browser does not support location sharing.";
+      return;
     }
 
-    locationStatus.innerText = "Finding your location...";
+    status.textContent =
+      "Finding your location... Please allow location access.";
 
     navigator.geolocation.getCurrentPosition(
+      (position) => {
+        pickupPoint = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
 
-        function (position) {
+        document.getElementById("pickup").value =
+          pickupPoint.lat.toFixed(5) +
+          ", " +
+          pickupPoint.lng.toFixed(5);
 
-            const lat = position.coords.latitude;
-            const lng = position.coords.longitude;
+        status.textContent =
+          "Pickup location found successfully.";
 
-            pickupLocation = [lat, lng];
+        showMapBtn.disabled = false;
+      },
 
-            if (pickupMarker) {
-                map.removeLayer(pickupMarker);
-            }
+      (error) => {
+        status.textContent =
+          "Could not get your location. Allow location access and try again.";
+      },
 
-            pickupMarker = L.marker(pickupLocation)
-                .addTo(map)
-                .bindPopup("Your pickup location");
-
-            pickupInput.value =
-                lat.toFixed(5) + ", " + lng.toFixed(5);
-
-            map.setView(pickupLocation, 15);
-
-            locationStatus.innerText =
-                "Pickup location found!";
-
-            destinationLocation = null;
-            destinationInput.value = "";
-
-            distanceDisplay.innerText =
-                "Distance: Not calculated";
-
-            fareDisplay.innerText =
-                "Your fare: R0.00";
-
-            if (destinationMarker) {
-                map.removeLayer(destinationMarker);
-                destinationMarker = null;
-            }
-
-            if (routeLine) {
-                map.removeLayer(routeLine);
-                routeLine = null;
-            }
-
-        },
-
-        function () {
-            locationStatus.innerText =
-                "Location not found. Please allow GPS permission.";
-        }
-
+      {
+        enableHighAccuracy: true,
+        timeout: 15000
+      }
     );
+  });
+}
 
-});
+// Open the map only after the passenger has selected pickup
+if (showMapBtn) {
+  showMapBtn.addEventListener("click", () => {
 
-
-// OPEN DESTINATION MAP
-showMapBtn.addEventListener("click", function () {
-
-    if (!pickupLocation) {
-        alert("Please select your pickup location first.");
-        return;
+    if (!pickupPoint) {
+      showBookingMessage(
+        "Please choose your pickup location first."
+      );
+      return;
     }
 
     mapArea.classList.add("active");
 
-    // LET LEAFLET RECOGNISE THE NEW MAP SIZE
-    setTimeout(function () {
-        map.invalidateSize();
-        map.setView(pickupLocation, 15);
-    }, 100);
+    if (!map) {
+      map = L.map("map").setView(
+        [pickupPoint.lat, pickupPoint.lng],
+        14
+      );
 
-});
+      L.tileLayer(
+        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+        {
+          maxZoom: 19,
+          attribution: "&copy; OpenStreetMap contributors"
+        }
+      ).addTo(map);
 
+      map.on("click", (event) => {
 
-// SELECT DESTINATION
-map.on("click", function (event) {
+        destinationPoint = {
+          lat: event.latlng.lat,
+          lng: event.latlng.lng
+        };
 
-    if (!mapArea.classList.contains("active")) {
-        return;
+        if (destinationMarker) {
+          map.removeLayer(destinationMarker);
+        }
+
+        destinationMarker = L.marker(event.latlng)
+          .addTo(map)
+          .bindPopup("Your destination")
+          .openPopup();
+
+        confirmDestinationBtn.disabled = false;
+
+        showBookingMessage(
+          "Destination selected. Press Confirm Destination."
+        );
+      });
     }
 
-    destinationLocation = [
-        event.latlng.lat,
-        event.latlng.lng
-    ];
+    setTimeout(() => {
+      map.invalidateSize();
 
-    if (destinationMarker) {
-        map.removeLayer(destinationMarker);
+      map.setView(
+        [pickupPoint.lat, pickupPoint.lng],
+        14
+      );
+    }, 150);
+  });
+}
+
+// Confirm destination and calculate route distance and estimated fare
+if (confirmDestinationBtn) {
+  confirmDestinationBtn.addEventListener("click", async () => {
+
+    if (!pickupPoint || !destinationPoint) {
+      showBookingMessage(
+        "Please choose a destination on the map."
+      );
+      return;
     }
 
-    destinationMarker = L.marker(destinationLocation)
-        .addTo(map)
-        .bindPopup("Selected destination")
-        .openPopup();
-
-});
-
-
-// CONFIRM DESTINATION
-confirmBtn.addEventListener("click", async function () {
-
-    if (!destinationLocation) {
-        alert("Please tap the map to choose your destination.");
-        return;
-    }
-
-    destinationInput.value =
-        destinationLocation[0].toFixed(5) +
-        ", " +
-        destinationLocation[1].toFixed(5);
-
-    mapArea.classList.remove("active");
+    document.getElementById("destination").value =
+      destinationPoint.lat.toFixed(5) +
+      ", " +
+      destinationPoint.lng.toFixed(5);
 
     await calculateRoute();
 
-});
+    mapArea.classList.remove("active");
+  });
+}
 
-
-// CALCULATE ROAD DISTANCE
+// Calculate route and fare
 async function calculateRoute() {
 
-    const start =
-        pickupLocation[1] + "," + pickupLocation[0];
+  const distanceText = document.getElementById("distance");
+  const fareText = document.getElementById("fare");
 
-    const end =
-        destinationLocation[1] + "," + destinationLocation[0];
+  showBookingMessage("Calculating your route...");
 
-    const url =
-        "https://router.project-osrm.org/route/v1/driving/" +
-        start + ";" + end +
-        "?overview=full&geometries=geojson";
+  // OSRM expects longitude first, then latitude.
+  const start =
+    `${pickupPoint.lng},${pickupPoint.lat}`;
 
-    distanceDisplay.innerText = "Distance: Calculating...";
-    fareDisplay.innerText = "Your fare: Calculating...";
+  const end =
+    `${destinationPoint.lng},${destinationPoint.lat}`;
 
-    try {
+  const url =
+    `https://router.project-osrm.org/route/v1/driving/${start};${end}?overview=full&geometries=geojson`;
 
-        const response = await fetch(url);
-        const data = await response.json();
+  try {
 
-        if (!response.ok || data.code !== "Ok") {
-            throw new Error("Route unavailable");
-        }
+    const response = await fetch(url);
 
-        const km = data.routes[0].distance / 1000;
-
-        const total = baseFare + (km * pricePerKm);
-
-        distanceDisplay.innerText =
-            "Distance: " + km.toFixed(2) + " km";
-
-        fareDisplay.innerText =
-            "Your fare: R" + total.toFixed(2);
-
-        if (routeLine) {
-            map.removeLayer(routeLine);
-        }
-
-        routeLine = L.geoJSON(
-            data.routes[0].geometry,
-            {
-                style: {
-                    color: "#16834a",
-                    weight: 6
-                }
-            }
-        ).addTo(map);
-
-    } catch (error) {
-
-        distanceDisplay.innerText =
-            "Distance: Could not calculate";
-
-        fareDisplay.innerText =
-            "Route unavailable. Please try again.";
-
-        console.error(error);
-
+    if (!response.ok) {
+      throw new Error("Route service did not respond");
     }
 
+    const data = await response.json();
+
+    if (!data.routes || data.routes.length === 0) {
+      throw new Error("No driving route found");
+    }
+
+    const distanceKm =
+      data.routes[0].distance / 1000;
+
+    const estimatedFare =
+      10 + (distanceKm * 3);
+
+    distanceText.textContent =
+      distanceKm.toFixed(2) + " km";
+
+    fareText.textContent =
+      "R" + estimatedFare.toFixed(2);
+
+    showBookingMessage(
+      "Your route and estimated fare are ready."
+    );
+
+    // Draw the route on the map if the passenger opens it again.
+    if (routeLayer) {
+      map.removeLayer(routeLayer);
+    }
+
+    routeLayer = L.geoJSON(
+      data.routes[0].geometry,
+      {
+        style: {
+          color: "#e5a900",
+          weight: 6
+        }
+      }
+    ).addTo(map);
+
+  } catch (error) {
+
+    distanceText.textContent = "Unavailable";
+    fareText.textContent = "—";
+
+    showBookingMessage(
+      "We could not calculate the route. Please try another destination."
+    );
+  }
 }
