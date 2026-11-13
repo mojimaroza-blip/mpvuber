@@ -1,63 +1,76 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Village Ride | Home</title>
-
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Village Ride | Safe, Reliable, Affordable</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-    <!-- NAVIGATION -->
-    <nav>
-        <h2>VILLAGE RIDE</h2>
-
-        <div class="links">
-            <a href="index.html">Home</a>
-            <a href="booking.html">Book Ride</a>
-            <a href="driver.html">Driver</a>
-        </div>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Village Ride home">
+      <span class="brand-car">🚘</span>
+      <span>VILLAGE <b>RIDE</b></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a class="active" href="index.html">Home</a>
+      <a href="booking.html">Book Ride</a>
+      <a href="driver.html">Driver</a>
     </nav>
+  </header>
 
-    <!-- HOME SECTION -->
+  <main>
     <section class="hero">
-
-        <h1>YOUR RIDE, YOUR DESTINATION</h1>
-
-        <p>
-            Reliable local transport around Mphanama.
-            Travel safely and conveniently with Village Ride.
-        </p>
-
-        <a href="booking.html" class="btn">
-            BOOK A RIDE
-        </a>
-
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <p class="eyebrow">YOUR LOCAL RIDE SERVICE</p>
+        <h1>VILLAGE <span>RIDE</span></h1>
+        <h2>Safe. Reliable. Affordable.</h2>
+        <div class="gold-line"></div>
+        <p class="hero-copy">Your ride, our priority —<br>anywhere in Mphanama!</p>
+        <a class="button button-gold" href="booking.html">▣ &nbsp; Book Your Ride <span>→</span></a>
+      </div>
+      <div class="hero-features">
+        <div><span class="feature-icon">✓</span><span>Safe Travel</span></div>
+        <div><span class="feature-icon">◷</span><span>On Time</span></div>
+        <div><span class="feature-icon">♟</span><span>7-Seater Comfort</span></div>
+        <div><span class="feature-icon">⌖</span><span>In Mphanama</span></div>
+      </div>
     </section>
 
-    <!-- ABOUT SECTION -->
-    <section class="about">
-
-        <h2>WELCOME TO VILLAGE RIDE</h2>
-
-        <p>
-            Village Ride connects passengers with local drivers.
-            Request your transport, see your estimated fare
-            and travel to your destination with ease.
-        </p>
-
+    <section class="about-section" id="about">
+      <div class="about-car" role="img" aria-label="Seven-seater vehicle"></div>
+      <div class="about-copy">
+        <p class="eyebrow dark-eyebrow">TRAVEL WITH CONFIDENCE</p>
+        <h2>About Village Ride</h2>
+        <p>Village Ride connects passengers with local drivers. Request your transport, see your estimated fare, and travel to your destination with ease.</p>
+        <a class="button button-gold small-button" href="booking.html">Learn More →</a>
+      </div>
+      <div class="about-facts">
+        <div><span>⌖</span><b>Local Service</b><small>Mphanama</small></div>
+        <div><span>◷</span><b>Every Day</b><small>8am – 9pm</small></div>
+        <div><span>R</span><b>Cash Payments</b><small>Pay your driver</small></div>
+      </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>© DSR DESIGN</p>
-        <p>Payment: Cash directly to the driver</p>
-    </footer>
+    <section class="how-section">
+      <p class="eyebrow dark-eyebrow">SIMPLE AND EASY</p>
+      <h2>How Village Ride Works</h2>
+      <div class="steps">
+        <article><span>01</span><h3>Choose your pickup</h3><p>Allow location access so we can find your pickup point.</p></article>
+        <article><span>02</span><h3>Select destination</h3><p>Choose your destination on the map and view an estimated fare.</p></article>
+        <article><span>03</span><h3>Confirm with a driver</h3><p>Pay your driver directly in cash after your ride.</p></article>
+      </div>
+      <a class="button button-navy" href="booking.html">Start Booking →</a>
+    </section>
+  </main>
 
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="index.html"><span>🚘</span><span>VILLAGE <b>RIDE</b></span></a>
+    <p>Travel smart. Travel with Village Ride.</p>
+    <small>© 2026 Village Ride · Mphanama</small>
+  </footer>
+  <script src="script.js"></script>
 </body>
 </html>
-
