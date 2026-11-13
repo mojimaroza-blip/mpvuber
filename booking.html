@@ -1,95 +1,75 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Village Ride | Book Ride</title>
-
-    <link rel="stylesheet" href="style.css">
-
-    <link rel="stylesheet"
-    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Ride | Village Ride</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <header class="site-header">
+    <a class="brand" href="index.html"><span class="brand-car">🚘</span><span>VILLAGE <b>RIDE</b></span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a class="active" href="booking.html">Book Ride</a>
+      <a href="driver.html">Driver</a>
+    </nav>
+  </header>
 
-<nav>
-    <h2>VILLAGE RIDE</h2>
+  <main class="inner-page">
+    <section class="booking-card">
+      <p class="eyebrow dark-eyebrow">LET'S GET YOU THERE</p>
+      <h1>BOOK YOUR RIDE</h1>
+      <p class="section-intro">Where would you like to go?</p>
 
-    <div class="links">
-        <a href="index.html">Home</a>
-        <a href="booking.html">Book Ride</a>
-        <a href="driver.html">Driver</a>
-    </div>
-</nav>
+      <button class="button button-gold wide-button" id="locationBtn">
+        ⌖ &nbsp; USE MY CURRENT LOCATION
+      </button>
+      <p class="status-message" id="locationStatus" aria-live="polite">
+        Tap the button to choose your pickup location.
+      </p>
 
-<section class="booking">
+      <label for="pickup">Pickup location</label>
+      <input id="pickup" type="text" placeholder="Your pickup coordinates" readonly>
 
-    <h1>BOOK YOUR RIDE</h1>
+      <label for="destination">Destination</label>
+      <input id="destination" type="text" placeholder="Choose a destination on the map" readonly>
 
-    <p>Where would you like to go?</p>
+      <button class="button button-navy wide-button" id="showMapBtn" disabled>
+        ⌖ &nbsp; CHOOSE DESTINATION
+      </button>
 
-    <button type="button" id="locationBtn">
-        USE MY CURRENT LOCATION
-    </button>
-
-    <p id="locationStatus">
-        Please select your pickup location.
-    </p>
-
-    <label for="pickup">Pickup location</label>
-
-    <input type="text" id="pickup"
-    placeholder="Your current location" readonly>
-
-    <label for="destination">Destination</label>
-
-    <input type="text" id="destination"
-    placeholder="Choose your destination" readonly>
-
-    <button type="button" id="showMapBtn">
-        CHOOSE DESTINATION
-    </button>
-
-    <!-- HIDDEN MAP AREA -->
-    <div id="mapArea">
-
-        <h3>Select your destination</h3>
-
-        <p>Tap the map where you want to go.</p>
-
+      <div id="mapArea">
+        <p class="map-help">Tap anywhere on the map to place your destination pin.</p>
         <div id="map"></div>
-
-        <button type="button" id="confirmDestinationBtn">
-            CONFIRM DESTINATION
+        <button class="button button-gold wide-button" id="confirmDestinationBtn" disabled>
+          CONFIRM DESTINATION
         </button>
+      </div>
 
-    </div>
+      <div class="fare-panel">
+        <div><small>Distance</small><strong id="distance">— km</strong></div>
+        <div><small>Estimated fare</small><strong id="fare">R—</strong></div>
+      </div>
+      <p class="fare-note">
+        Fare estimate: R10 base fare + R3 per kilometre.
+        Final price may vary with the actual route.
+      </p>
+      <p class="status-message" id="bookingStatus" aria-live="polite"></p>
+      <p class="cash-note">Cash payment is made directly to your driver.</p>
+    </section>
+  </main>
 
-    <!-- FARE -->
-    <div class="fare-box">
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="index.html">
+      <span>🚘</span><span>VILLAGE <b>RIDE</b></span>
+    </a>
+    <small>© 2026 Village Ride · Mphanama</small>
+  </footer>
 
-        <h3 id="distance">Distance: Not calculated</h3>
-
-        <h3 id="fare">Your fare: R0.00</h3>
-
-        <p>Base fare: R10</p>
-        <p>Price per kilometre: R3</p>
-        <p>Payment: Cash</p>
-
-    </div>
-
-</section>
-
-<footer>
-    <p>© DSR DESIGN </p>
-</footer>
-
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-<script src="script.js"></script>
-
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
