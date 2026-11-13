@@ -1,7 +1,7 @@
 
-/* =================================
-   VILLAGE RIDE - GENERAL WEBSITE
-================================= */
+/* =========================================
+   VILLAGE RIDE - SHARED WEBSITE DESIGN
+========================================= */
 
 :root {
   --navy: #061a34;
@@ -22,6 +22,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   background: var(--paper);
@@ -34,14 +38,18 @@ a {
   color: inherit;
 }
 
-button {
+button,
+input {
   font-family: inherit;
+}
+
+button {
   cursor: pointer;
 }
 
-/* =================================
-   HEADER AND NAVIGATION
-================================= */
+/* =========================================
+   HEADER AND NAVIGATION - ALL PAGES
+========================================= */
 
 .site-header {
   width: 100%;
@@ -92,14 +100,425 @@ button {
 .menu-toggle {
   display: none;
   background: transparent;
-  border: 0;
+  border: none;
   color: var(--white);
   font-size: 28px;
 }
 
-/* =================================
+/* =========================================
+   SHARED BUTTONS
+========================================= */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 25px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+}
+
+.button-gold {
+  background: var(--gold);
+  color: var(--navy);
+}
+
+.button-gold:hover {
+  background: var(--gold-dark);
+}
+
+.button-navy {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.button-navy:hover {
+  background: var(--navy-light);
+}
+
+.wide-button {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.small-button {
+  padding: 11px 20px;
+  font-size: 14px;
+}
+
+/* =========================================
+   HOME PAGE - HERO
+========================================= */
+
+.hero {
+  min-height: 620px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 70px 9% 120px;
+  overflow: hidden;
+  background:
+    linear-gradient(120deg, #061a34 10%, #12365a 65%, #254a6c);
+}
+
+.hero::before {
+  content: "🚐";
+  position: absolute;
+  right: 8%;
+  top: 18%;
+  font-size: clamp(120px, 25vw, 300px);
+  opacity: 0.13;
+  transform: rotate(-5deg);
+}
+
+.hero-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(6, 26, 52, 0.35),
+    transparent
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 650px;
+  color: var(--white);
+}
+
+.eyebrow {
+  color: var(--gold-dark);
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.hero h1 {
+  font-size: clamp(42px, 7vw, 76px);
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+
+.hero h1 span {
+  color: var(--gold);
+}
+
+.hero h2 {
+  font-size: clamp(20px, 3vw, 30px);
+  color: #e2e8f0;
+}
+
+.gold-line {
+  width: 75px;
+  height: 5px;
+  background: var(--gold);
+  margin: 25px 0;
+  border-radius: 5px;
+}
+
+.hero-copy {
+  font-size: 19px;
+  margin-bottom: 30px;
+  color: #e2e8f0;
+}
+
+.hero-features {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background: rgba(4, 17, 35, 0.85);
+  padding: 22px 7%;
+  z-index: 2;
+}
+
+.hero-features div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: var(--white);
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.feature-icon {
+  color: var(--gold);
+  font-size: 23px;
+}
+
+/* =========================================
+   HOME PAGE - ABOUT SECTION
+========================================= */
+
+.about-section {
+  max-width: 1200px;
+  margin: auto;
+  padding: 80px 25px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+  align-items: center;
+}
+
+.about-car {
+  min-height: 300px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #12365a, #061a34);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.about-car::after {
+  content: "🚐";
+  font-size: clamp(100px, 17vw, 190px);
+  filter: drop-shadow(0 15px 12px rgba(0,0,0,0.25));
+}
+
+.dark-eyebrow {
+  color: var(--gold-dark);
+}
+
+.about-copy h2,
+.how-section h2 {
+  color: var(--navy);
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+.about-copy > p:not(.eyebrow) {
+  color: var(--muted);
+  margin-bottom: 25px;
+}
+
+.about-facts {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 15px;
+}
+
+.about-facts div {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 5px 20px rgba(6, 26, 52, 0.05);
+}
+
+.about-facts span {
+  color: var(--gold-dark);
+  font-size: 27px;
+}
+
+.about-facts b {
+  color: var(--navy);
+}
+
+.about-facts small {
+  color: var(--muted);
+}
+
+/* =========================================
+   HOME PAGE - HOW IT WORKS
+========================================= */
+
+.how-section {
+  text-align: center;
+  padding: 75px 7%;
+  background: #eaf0f7;
+}
+
+.how-section > h2 {
+  margin-bottom: 35px;
+}
+
+.steps {
+  max-width: 1150px;
+  margin: 0 auto 35px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  text-align: left;
+}
+
+.steps article {
+  background: var(--white);
+  padding: 28px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(6, 26, 52, 0.05);
+}
+
+.steps article > span {
+  display: inline-flex;
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 20px;
+  font-weight: bold;
+  padding: 8px 13px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.steps h3 {
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.steps p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* =========================================
+   BOOKING PAGE
+========================================= */
+
+.inner-page {
+  min-height: 75vh;
+  padding: 55px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.booking-card {
+  width: 100%;
+  max-width: 650px;
+  background: var(--white);
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 0 10px 35px rgba(6, 26, 52, 0.09);
+}
+
+.booking-card h1 {
+  color: var(--navy);
+  font-size: 32px;
+  margin-bottom: 5px;
+}
+
+.section-intro {
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.booking-card label {
+  display: block;
+  color: var(--navy);
+  font-weight: bold;
+  font-size: 14px;
+  margin: 18px 0 7px;
+}
+
+.booking-card input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: var(--ink);
+  font-size: 15px;
+  outline: none;
+}
+
+.booking-card input:focus {
+  border-color: var(--gold-dark);
+}
+
+.status-message {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 10px;
+  min-height: 18px;
+}
+
+#mapArea {
+  display: none;
+  margin-top: 22px;
+}
+
+#mapArea.active {
+  display: block;
+}
+
+.map-help {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+#map {
+  width: 100%;
+  height: 350px;
+  border-radius: 12px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.fare-panel {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  background: #edf3fa;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 25px;
+}
+
+.fare-panel div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.fare-panel small {
+  color: var(--muted);
+}
+
+.fare-panel strong {
+  color: var(--navy);
+  font-size: 24px;
+}
+
+.fare-note,
+.cash-note {
+  color: var(--muted);
+  font-size: 13px;
+  margin-top: 12px;
+}
+
+.cash-note {
+  color: var(--navy);
+  font-weight: bold;
+}
+
+/* =========================================
    DRIVER DASHBOARD
-================================= */
+========================================= */
 
 .driver-dashboard {
   width: 100%;
@@ -108,14 +527,8 @@ button {
   padding: 45px 25px 70px;
 }
 
-/* Dashboard heading */
-
 .dashboard-heading {
-  background: linear-gradient(
-    120deg,
-    var(--navy),
-    var(--navy-light)
-  );
+  background: linear-gradient(120deg, var(--navy), var(--navy-light));
   color: var(--white);
   padding: 40px;
   border-radius: 20px;
@@ -125,14 +538,6 @@ button {
   gap: 25px;
   margin-bottom: 30px;
   box-shadow: 0 10px 30px rgba(6, 26, 52, 0.12);
-}
-
-.eyebrow {
-  color: var(--gold-dark);
-  font-size: 12px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  margin-bottom: 10px;
 }
 
 .dashboard-heading h1 {
@@ -147,8 +552,6 @@ button {
 .dashboard-heading p:not(.eyebrow) {
   color: #dbe5f2;
 }
-
-/* Online and offline status */
 
 .driver-status {
   display: flex;
@@ -178,10 +581,6 @@ button {
   background: var(--gold-dark);
   transform: translateY(-2px);
 }
-
-/* =================================
-   DRIVER STATISTICS
-================================= */
 
 .driver-stats {
   display: grid;
@@ -213,10 +612,6 @@ button {
   color: var(--muted);
   font-size: 14px;
 }
-
-/* =================================
-   CUSTOMER REQUESTS
-================================= */
 
 .requests-section,
 .current-trip,
@@ -254,8 +649,6 @@ button {
   font-weight: bold;
 }
 
-/* Empty request and trip boxes */
-
 .empty-requests {
   background: #f8fafc;
   border: 1px dashed #cbd5e1;
@@ -279,10 +672,6 @@ button {
   max-width: 500px;
   margin: auto;
 }
-
-/* =================================
-   DRIVER ACCOUNT TOOLS
-================================= */
 
 .driver-tools h2 {
   margin-bottom: 22px;
@@ -324,10 +713,6 @@ button {
   font-size: 13px;
 }
 
-/* =================================
-   PRICING INFORMATION
-================================= */
-
 .driver-pricing {
   background: var(--navy);
   color: var(--white);
@@ -366,9 +751,9 @@ button {
   margin-top: 20px;
 }
 
-/* =================================
-   FOOTER
-================================= */
+/* =========================================
+   FOOTER - ALL PAGES
+========================================= */
 
 .site-footer {
   background: var(--navy);
@@ -380,13 +765,15 @@ button {
   gap: 15px;
 }
 
+.site-footer p,
 .site-footer small {
   color: #cbd5e1;
+  font-size: 13px;
 }
 
-/* =================================
-   MOBILE RESPONSIVE DESIGN
-================================= */
+/* =========================================
+   TABLET RESPONSIVE DESIGN
+========================================= */
 
 @media (max-width: 900px) {
 
@@ -398,10 +785,22 @@ button {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .dashboard-heading {
-    padding: 30px;
+  .hero {
+    min-height: 570px;
+  }
+
+  .hero-features {
+    padding: 18px 3%;
+  }
+
+  .hero-features div {
+    font-size: 12px;
   }
 }
+
+/* =========================================
+   MOBILE RESPONSIVE DESIGN
+========================================= */
 
 @media (max-width: 600px) {
 
@@ -430,6 +829,69 @@ button {
     display: flex;
   }
 
+  .hero {
+    min-height: 650px;
+    padding: 55px 7% 180px;
+  }
+
+  .hero-features {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    padding: 20px 10px;
+  }
+
+  .hero-features div {
+    justify-content: flex-start;
+    padding-left: 12px;
+  }
+
+  .about-section {
+    grid-template-columns: 1fr;
+    padding: 50px 20px;
+  }
+
+  .about-car {
+    min-height: 220px;
+  }
+
+  .about-facts {
+    grid-column: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .how-section {
+    padding: 50px 20px;
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .inner-page {
+    padding: 30px 12px;
+  }
+
+  .booking-card {
+    padding: 22px 17px;
+  }
+
+  .booking-card h1 {
+    font-size: 26px;
+  }
+
+  #map {
+    height: 300px;
+  }
+
+  .fare-panel {
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .fare-panel strong {
+    font-size: 20px;
+  }
+
   .driver-dashboard {
     padding: 25px 15px 45px;
   }
@@ -446,10 +908,6 @@ button {
 
   .driver-status {
     align-items: flex-start;
-  }
-
-  .driver-stats {
-    gap: 12px;
   }
 
   .stat-card {
@@ -472,10 +930,6 @@ button {
     flex-direction: column;
   }
 
-  .tools-grid {
-    gap: 12px;
-  }
-
   .tool-card {
     padding: 15px;
   }
@@ -490,11 +944,19 @@ button {
   }
 }
 
+/* =========================================
+   SMALL PHONES
+========================================= */
+
 @media (max-width: 380px) {
 
   .driver-stats,
   .tools-grid {
     grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 38px;
   }
 
 }
