@@ -1,61 +1,263 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Drivers | Village Ride</title>
+
+  <title>Driver Dashboard | Village Ride</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
+  <!-- HEADER -->
   <header class="site-header">
+
     <a class="brand" href="index.html">
       <span class="brand-car">🚘</span>
       <span>VILLAGE <b>RIDE</b></span>
     </a>
-    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">☰</button>
+
+    <button class="menu-toggle" id="menuToggle">
+      ☰
+    </button>
+
     <nav class="nav-links" id="navLinks">
       <a href="index.html">Home</a>
       <a href="booking.html">Book Ride</a>
       <a class="active" href="driver.html">Driver</a>
     </nav>
+
   </header>
 
-  <main class="driver-hero">
-    <div class="driver-copy">
-      <p class="eyebrow">JOIN OUR LOCAL DRIVER NETWORK</p>
-      <h1>WELCOME,<br><span>DRIVER</span></h1>
-      <p>Join Village Ride and help people travel around Mphanama.</p>
 
-      <ul>
-        <li>✓ Get ride requests</li>
-        <li>✓ Earn from your trips</li>
-        <li>✓ Work on your terms</li>
-      </ul>
+  <!-- DRIVER DASHBOARD -->
+  <main class="driver-dashboard">
 
-      <div class="driver-notice">
-        <h2>Driver registration is coming soon</h2>
-        <p>
-          This page is the design preview. Driver accounts, approval and ride
-          requests still need to be connected to Firebase before drivers can use them.
-        </p>
+    <section class="dashboard-heading">
+
+      <div>
+        <p class="eyebrow">VILLAGE RIDE DRIVER PORTAL</p>
+
+        <h1>Welcome, <span>Driver!</span></h1>
+
+        <p>Manage your rides and grow your earnings.</p>
       </div>
 
-      <a class="button button-gold" href="index.html">Back to Home →</a>
-    </div>
+      <div class="driver-status">
 
-    <div class="driver-visual">
-      <div class="driver-car">🚙</div>
-      <div class="driver-caption">Together we move Mphanama forward.</div>
-    </div>
+        <span id="statusText">OFFLINE</span>
+
+        <button id="onlineBtn" class="online-btn">
+          Go Online
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- EARNINGS CARDS -->
+    <section class="driver-stats">
+
+      <div class="stat-card">
+        <span>💰</span>
+        <h2 id="todayEarnings">R0.00</h2>
+        <p>Today's Earnings</p>
+      </div>
+
+      <div class="stat-card">
+        <span>🚕</span>
+        <h2 id="completedTrips">0</h2>
+        <p>Completed Trips</p>
+      </div>
+
+      <div class="stat-card">
+        <span>🔔</span>
+        <h2 id="availableRequests">0</h2>
+        <p>Available Requests</p>
+      </div>
+
+      <div class="stat-card">
+        <span>⭐</span>
+        <h2 id="driverRating">New</h2>
+        <p>Driver Rating</p>
+      </div>
+
+    </section>
+
+
+    <!-- CUSTOMER REQUESTS -->
+    <section class="requests-section">
+
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">NEW OPPORTUNITIES</p>
+          <h2>Customer Requests</h2>
+        </div>
+
+        <span class="request-label">Ride requests</span>
+      </div>
+
+      <div id="requestsContainer">
+
+        <div class="empty-requests">
+
+          <span>🚘</span>
+
+          <h3>No ride requests yet</h3>
+
+          <p>
+            Go online to become available for customer bookings.
+            New requests will appear here once Firebase is connected.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CURRENT TRIP -->
+    <section class="current-trip">
+
+      <p class="eyebrow">YOUR JOURNEY</p>
+
+      <h2>Current Trip</h2>
+
+      <div id="currentTripContainer">
+
+        <div class="empty-requests">
+
+          <span>📍</span>
+
+          <h3>No active trip</h3>
+
+          <p>Your accepted rides will appear here.</p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- DRIVER MENU -->
+    <section class="driver-tools">
+
+      <h2>Manage Your Account</h2>
+
+      <div class="tools-grid">
+
+        <a href="#profile" class="tool-card">
+          <span>👤</span>
+          <h3>My Profile</h3>
+          <p>Manage driver details</p>
+        </a>
+
+        <a href="#vehicle" class="tool-card">
+          <span>🚙</span>
+          <h3>My Vehicle</h3>
+          <p>Manage vehicle details</p>
+        </a>
+
+        <a href="#earnings" class="tool-card">
+          <span>💵</span>
+          <h3>My Earnings</h3>
+          <p>View your income</p>
+        </a>
+
+        <a href="#history" class="tool-card">
+          <span>📋</span>
+          <h3>Trip History</h3>
+          <p>View previous rides</p>
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- PRICING INFORMATION -->
+    <section class="driver-pricing">
+
+      <h2>Village Ride Fare System</h2>
+
+      <div class="pricing-details">
+
+        <div>
+          <p>Base Fare</p>
+          <h3>R10.00</h3>
+        </div>
+
+        <div>
+          <p>Per Kilometre</p>
+          <h3>R3.00</h3>
+        </div>
+
+      </div>
+
+      <p class="pricing-note">
+        Your estimated trip fare is calculated using the
+        customer's journey distance.
+      </p>
+
+    </section>
+
   </main>
 
+
+  <!-- FOOTER -->
   <footer class="site-footer">
+
     <a class="brand footer-brand" href="index.html">
-      <span>🚘</span><span>VILLAGE <b>RIDE</b></span>
+      <span>🚘</span>
+      <span>VILLAGE <b>RIDE</b></span>
     </a>
+
     <small>© 2026 Village Ride · Mphanama</small>
+
   </footer>
 
+
   <script src="script.js"></script>
+
+  <!-- DRIVER DASHBOARD INTERACTION PREVIEW -->
+  <script>
+
+    const onlineBtn = document.getElementById("onlineBtn");
+    const statusText = document.getElementById("statusText");
+
+    let isOnline = false;
+
+    onlineBtn.addEventListener("click", function () {
+
+      isOnline = !isOnline;
+
+      if (isOnline) {
+
+        statusText.textContent = "ONLINE";
+        statusText.style.color = "#16a34a";
+
+        onlineBtn.textContent = "Go Offline";
+        onlineBtn.style.background = "#dc2626";
+
+      } else {
+
+        statusText.textContent = "OFFLINE";
+        statusText.style.color = "#dc2626";
+
+        onlineBtn.textContent = "Go Online";
+        onlineBtn.style.background = "";
+
+      }
+
+    });
+
+  </script>
+
 </body>
 </html>
